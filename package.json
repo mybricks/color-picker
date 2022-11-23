@@ -1,0 +1,45 @@
+{
+  "name": "@mybricks/color-picker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "start": "cd example && npm run dev",
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mybricks/color-picker.git"
+  },
+  "dependencies": {
+    "@uiw/react-color-alpha": "^1.1.1",
+    "@uiw/react-color-editable-input": "^1.1.1",
+    "@uiw/react-color-editable-input-rgba": "^1.1.1",
+    "@uiw/react-color-hue": "^1.1.1",
+    "@uiw/react-color-saturation": "^1.1.1",
+    "@uiw/react-color-swatch": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.3.3",
+    "@rollup/plugin-babel": "^6.0.2",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@types/react": "^17.0.52",
+    "react": "17",
+    "rollup": "^3.4.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
