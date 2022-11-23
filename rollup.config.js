@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
+import terser from '@rollup/plugin-terser';
 import typescript from "@rollup/plugin-typescript";
 
 const babelOptions = {
@@ -23,6 +24,7 @@ export default {
     commonjs(),
     babel(babelOptions),
     typescript(),
+    terser()
   ],
   external: ['react']
 };
