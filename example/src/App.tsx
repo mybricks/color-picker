@@ -3,7 +3,7 @@ import Sketch from "../../src/index";
 import "./App.css";
 
 function App() {
-  const [hex, setHex] = useState("#FFFFFF");
+  const [hex, setHex] = useState("rgba(255, 255, 255,0 )");
 
   return (
     <div className="App">

@@ -1,6 +1,6 @@
 {
   "name": "@mybricks/color-picker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,7 +22,7 @@
     "@uiw/react-color-editable-input-rgba": "^1.1.1",
     "@uiw/react-color-hue": "^1.1.1",
     "@uiw/react-color-saturation": "^1.1.1",
-    "@uiw/react-color-swatch": "^1.1.1"
+    "color-string": "^1.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -35,6 +35,7 @@
     "@rollup/plugin-terser": "^0.1.0",
     "@rollup/plugin-typescript": "^9.0.2",
     "@types/react": "^17.0.52",
+    "@types/color-string": "^1.5.2",
     "react": "17",
     "rollup": "^3.4.0",
     "tslib": "^2.4.1",

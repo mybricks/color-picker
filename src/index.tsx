@@ -13,34 +13,53 @@ import {
   hexToHsva,
   color as handleColor,
   ColorResult,
+  rgbStringToHsva,
   getContrastingColor,
+  rgbaStringToHsva,
 } from "@uiw/color-convert";
-import Swatch, { SwatchPresetColor } from "@uiw/react-color-swatch";
+import Swatch, { SwatchPresetColor } from "./components/Swatch";
 import IconColorPalette from "./components/IconColorPalette";
+import { validRgb, validRgba } from "./utils";
+import colorString from "color-string";
 
 const PRESET_COLORS = [
-  "#D0021B",
-  "#F5A623",
-  "#f8e61b",
-  "#8B572A",
-  "#7ED321",
-  "#417505",
-  "#BD10E0",
-  "#9013FE",
-  "#4A90E2",
-  "#50E3C2",
-  "#B8E986",
-  "#000000",
-  "#4A4A4A",
-  "#9B9B9B",
-  "#FFFFFF",
-  "#FFFFFF00",
+  "rgb(245, 34, 45)",
+  "rgb(250, 84, 28)",
+  "rgb(250, 140, 22)",
+  "rgb(250, 173, 20)",
+  "rgb(250, 219, 20)",
+  "rgb(160, 217, 17)",
+  "rgb(82, 196, 26)",
+  "rgb(19, 194, 194)",
+  "rgb(24, 144, 255)",
+  "rgb(47, 84, 235)",
+  "rgb(114, 46, 209)",
+  "rgb(235, 47, 150)",
+  "rgb(255, 77, 79)",
+  "rgb(255, 122, 69)",
+  "rgb(255, 169, 64)",
+  "rgb(255, 197, 61)",
+  "rgb(255, 236, 61)",
+  "rgb(186, 230, 55)",
+  "rgb(115, 209, 61)",
+  "rgb(54, 207, 201)",
+  "rgb(64, 169, 255)",
+  "rgb(89, 126, 247)",
+  "rgb(255 255 255)",
+  "rgba(255, 255, 255, 0)",
 ];
+
+type HexColor = string;
+type RgbColor = string;
+type RgbaColor = string;
+type StringColor = string;
+
+type Color = HexColor | RgbaColor | RgbColor | StringColor;
 
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
   prefixCls?: string;
   width?: number;
-  color?: string | HsvaColor;
+  color?: Color;
   presetColors?: false | SwatchPresetColor[];
   editableDisable?: boolean;
   onChange?: (newShade: ColorResult) => void;
@@ -61,20 +80,6 @@ const Bar = (props: PointerProps) => (
   />
 );
 
-const Point = (props: { color?: string; checked?: boolean }) => {
-  if (!props.checked) return null;
-  return (
-    <div
-      style={{
-        height: 5,
-        width: 5,
-        borderRadius: "50%",
-        backgroundColor: getContrastingColor(props.color!),
-      }}
-    />
-  );
-};
-
 const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   const {
     prefixCls = "w-color-sketch",
@@ -91,12 +96,9 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
 
   useEffect(() => {
-    if (typeof color === "string" && validHex(color)) {
-      setHsva(hexToHsva(color));
-    }
-    if (typeof color === "object") {
-      setHsva(color);
-    }
+    const rgba = colorString.get.rgb(color || "transparent");
+    // @ts-ignore
+    setHsva(rgbaStringToHsva(colorString.to.rgb(rgba)));
   }, [color]);
 
   const handleChange = useCallback(
@@ -241,7 +243,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
             },
           }}
           rectRender={({ style, checked, color, onClick }) => {
-            if (color !== "#FFFFFF00") {
+            if (color !== "rgba(255, 255, 255, 0)") {
               return <div style={style} onClick={onClick}></div>;
             }
 
