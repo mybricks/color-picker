@@ -244,11 +244,12 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
           }}
           rectRender={({ style, checked, color, onClick }) => {
             if (color !== "rgba(255, 255, 255, 0)") {
-              return <div style={style} onClick={onClick}></div>;
+              return <div key={color} style={style} onClick={onClick}></div>;
             }
 
             return (
               <div
+                key={color}
                 onClick={onClick}
                 style={{
                   ...style,
