@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Color Picker</h1>
+      <h1 style={{ backgroundColor: hex }}>Color Picker</h1>
       <Sketch
         style={{ marginLeft: 20 }}
         color={hex}

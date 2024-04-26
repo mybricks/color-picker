@@ -47,6 +47,14 @@ const PRESET_COLORS = [
   "rgb(89, 126, 247)",
   "rgb(255 255 255)",
   "rgba(255, 255, 255, 0)",
+  "rgb(0,0,0)",
+  "rgb(75,75,75)",
+  "rgb(105,105,105)",
+  "rgb(128,128,128)",
+  "rgb(169,169,169)",
+  "rgb(192,192,192)",
+  "rgb(211,211,211)",
+  "rgb(220,220,220)",
 ];
 
 type HexColor = string;
@@ -56,7 +64,8 @@ type StringColor = string;
 
 type Color = HexColor | RgbaColor | RgbColor | StringColor;
 
-export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
+export interface SketchProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
   prefixCls?: string;
   width?: number;
   color?: Color;
@@ -109,8 +118,15 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     [hsva]
   );
 
-  const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof value === "string" && validHex(value) && /(3|6)/.test(String(value.length))) {
+  const handleHex = (
+    value: string | number,
+    evn: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (
+      typeof value === "string" &&
+      validHex(value) &&
+      /(3|6)/.test(String(value.length))
+    ) {
       handleChange(hexToHsva(value));
     }
   };
@@ -123,7 +139,8 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       style={{
         background: "rgb(255, 255, 255)",
         borderRadius: 4,
-        boxShadow: "rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px",
+        boxShadow:
+          "rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px",
         width,
         ...style,
       }}
@@ -132,7 +149,9 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <Saturation
           hsva={hsva}
           style={{ width: "auto", height: 150 }}
-          onChange={(newColor) => handleChange({ ...hsva, ...newColor, a: hsva.a })}
+          onChange={(newColor) =>
+            handleChange({ ...hsva, ...newColor, a: hsva.a })
+          }
         />
         <div style={{ display: "flex", marginTop: 4 }}>
           <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
@@ -202,7 +221,8 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               style: {
                 borderRadius: 2,
                 background: hsvaToRgbaString(hsva),
-                boxShadow: "rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset",
+                boxShadow:
+                  "rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset",
               },
             }}
             pointer={() => <Fragment />}
@@ -217,7 +237,11 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
             onChange={(evn, val) => handleHex(val, evn)}
             style={{ minWidth: 58 }}
           />
-          <RGBA hsva={hsva} style={{ marginLeft: 6 }} onChange={(result) => handleChange(result.hsva)} />
+          <RGBA
+            hsva={hsva}
+            style={{ marginLeft: 6 }}
+            onChange={(result) => handleChange(result.hsva)}
+          />
         </div>
       )}
       {presetColors && presetColors.length > 0 && (
