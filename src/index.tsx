@@ -22,6 +22,8 @@ import IconColorPalette from "./components/IconColorPalette";
 import { validRgb, validRgba } from "./utils";
 import colorString from "color-string";
 
+export type { ColorResult } from "@uiw/color-convert";
+
 const PRESET_COLORS = [
   "rgb(245, 34, 45)",
   "rgb(250, 84, 28)",
