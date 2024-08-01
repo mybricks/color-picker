@@ -1,8 +1,14 @@
 import React from "react";
-
 export default function () {
   return (
-    <svg data-v-58827bad="" width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      data-v-58827bad=""
+      width="1em"
+      height="1em"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         opacity="0.5"
         d="M6.22363 5.6792L8.27313 7.7287L3.67041 12.3314C3.10445 12.8974 2.18686 12.8974 1.62091 12.3314C1.05495 11.7655 1.05495 10.8479 1.62091 10.2819L6.22363 5.6792Z"

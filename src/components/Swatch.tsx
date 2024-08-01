@@ -1,5 +1,5 @@
 import React from "react";
-import { HsvaColor, hexToHsva, rgbaStringToHsva } from "@uiw/color-convert";
+import { HsvaColor, rgbaStringToHsva } from "@uiw/color-convert";
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
 export type SwatchRectRenderProps = {
@@ -10,7 +10,8 @@ export type SwatchRectRenderProps = {
   style: React.CSSProperties;
   onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
-export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
+export interface SwatchProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
   prefixCls?: string;
   color?: string;
   colors?: SwatchPresetColor[];
@@ -76,7 +77,9 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
             title = item.title || item.color;
             background = item.color;
           }
-          const checked = color && color.toLocaleLowerCase() === background.toLocaleLowerCase();
+          const checked =
+            color &&
+            color.toLocaleLowerCase() === background.toLocaleLowerCase();
           if (rectRender) {
             return rectRender({
               key: idx,

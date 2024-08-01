@@ -3,7 +3,7 @@ import Sketch from "../../src/index";
 import "./App.css";
 
 function App() {
-  const [hex, setHex] = useState("rgba(255, 255, 255,0 )");
+  const [hex, setHex] = useState("transparent");
 
   return (
     <div className="App">
@@ -12,7 +12,8 @@ function App() {
         style={{ marginLeft: 20 }}
         color={hex}
         onChange={(color) => {
-          setHex(color.hex);
+          console.log("======= color =======\n", color);
+          setHex(color.hexa);
         }}
       />
     </div>

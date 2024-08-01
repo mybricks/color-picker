@@ -3,5 +3,7 @@ export const validRgb = (color: string) => {
 };
 
 export const validRgba = (color: string) => {
-  return /^rgba\(\s?\d{1,3}\,\s?\d{1,3}\,\s?\d{1,3}(\,\s?(\d|\d\.\d+))?\s?\)$/.test(color);
+  return /^rgba\(\s?\d{1,3}\,\s?\d{1,3}\,\s?\d{1,3}(\,\s?(\d|\d\.\d+))?\s?\)$/.test(
+    color
+  );
 };
