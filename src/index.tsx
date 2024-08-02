@@ -3,7 +3,6 @@ import Saturation from "@uiw/react-color-saturation";
 import Alpha from "@uiw/react-color-alpha";
 import EditableInput from "@uiw/react-color-editable-input";
 import RGBA from "@uiw/react-color-editable-input-rgba";
-import { PointerProps } from "@uiw/react-color-alpha/esm/Pointer";
 import Hue from "@uiw/react-color-hue";
 import {
   validHex,
@@ -13,58 +12,15 @@ import {
   hexToHsva,
   color as handleColor,
   ColorResult,
-  rgbStringToHsva,
-  getContrastingColor,
   rgbaStringToHsva,
 } from "@uiw/color-convert";
-import Swatch, { SwatchPresetColor } from "./components/Swatch";
-import IconColorPalette from "./components/IconColorPalette";
-import { validRgb, validRgba } from "./utils";
 import colorString from "color-string";
 
 export type { ColorResult } from "@uiw/color-convert";
 
-const PRESET_COLORS = [
-  "rgb(245, 34, 45)",
-  "rgb(250, 84, 28)",
-  "rgb(250, 140, 22)",
-  "rgb(250, 173, 20)",
-  "rgb(250, 219, 20)",
-  "rgb(160, 217, 17)",
-  "rgb(82, 196, 26)",
-  "rgb(19, 194, 194)",
-  "rgb(24, 144, 255)",
-  "rgb(47, 84, 235)",
-  "rgb(114, 46, 209)",
-  "rgb(235, 47, 150)",
-  "rgb(255, 77, 79)",
-  "rgb(255, 122, 69)",
-  "rgb(255, 169, 64)",
-  "rgb(255, 197, 61)",
-  "rgb(255, 236, 61)",
-  "rgb(186, 230, 55)",
-  "rgb(115, 209, 61)",
-  "rgb(54, 207, 201)",
-  "rgb(64, 169, 255)",
-  "rgb(89, 126, 247)",
-  "rgb(255 255 255)",
-  "rgba(255, 255, 255, 0)",
-  "rgb(0,0,0)",
-  "rgb(75,75,75)",
-  "rgb(105,105,105)",
-  "rgb(128,128,128)",
-  "rgb(169,169,169)",
-  "rgb(192,192,192)",
-  "rgb(211,211,211)",
-  "rgb(220,220,220)",
-];
-
-type HexColor = string;
-type RgbColor = string;
-type RgbaColor = string;
-type StringColor = string;
-
-type Color = HexColor | RgbaColor | RgbColor | StringColor;
+import { SwatchPresetColor, Swatch, IconColorPalette, Bar } from "./components";
+import { PRESET_COLORS } from "./const";
+import { Color } from "./types";
 
 export interface SketchProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
@@ -75,21 +31,6 @@ export interface SketchProps
   editableDisable?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
-
-const Bar = (props: PointerProps) => (
-  <div
-    style={{
-      boxShadow: "rgb(0 0 0 / 60%) 0px 0px 2px",
-      width: 4,
-      top: 1,
-      bottom: 1,
-      left: props.left,
-      borderRadius: 1,
-      position: "absolute",
-      backgroundColor: "#fff",
-    }}
-  />
-);
 
 const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   const {

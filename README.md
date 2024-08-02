@@ -10,5 +10,5 @@ npm run build
 ```
 发布到npm publishToNpm
 ```
-npm run publish
+npm run publishToNpm
 ```
