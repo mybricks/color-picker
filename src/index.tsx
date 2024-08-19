@@ -24,12 +24,13 @@ import { Color } from "./types";
 
 export interface SketchProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
-  prefixCls?: string;
-  width?: number;
-  color?: Color;
-  presetColors?: false | SwatchPresetColor[];
-  editableDisable?: boolean;
-  onChange?: (newShade: ColorResult) => void;
+  prefixCls?: string; // 默认类前缀
+  width?: number; // 默认宽度
+  color?: Color; // 当前颜色值
+  presetColors?: false | SwatchPresetColor[]; // 预设颜色列表
+  editableDisable?: boolean; // 是否禁用编辑
+  onChange?: (newShade: ColorResult) => void; // 颜色改变时的回调函数
+  className?: string; // 自定义类名
 }
 
 const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {

@@ -13,7 +13,7 @@ function App() {
         color={hex}
         onChange={(color) => {
           console.log("======= color =======\n", color);
-          setHex(color.hexa);
+          setHex(color.hex);
         }}
       />
     </div>
