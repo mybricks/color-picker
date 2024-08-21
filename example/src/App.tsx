@@ -11,8 +11,8 @@ function App() {
       <Sketch
         style={{ marginLeft: 20 }}
         color={hex}
-        onChange={(color) => {
-          console.log("======= color =======\n", color);
+        onChange={(color, oldColor) => {
+          console.log("======= color =======\n", color, oldColor);
           setHex(color.hex);
         }}
       />
