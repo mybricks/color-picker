@@ -8,7 +8,7 @@ npm run start
 ```
 npm run build
 ```
-发布到npm publishToNpm
+发布到npm:
 ```
 npm run publishToNpm
 ```
