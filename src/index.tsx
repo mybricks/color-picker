@@ -115,7 +115,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
                   // console.log('按Esc可退出')
                   try {
                     const result = (await eyeDropper.open()) as any; // 开始拾取颜色
-                    console.log("result", result);
+                    // console.log("result", result);
                     handleChange(hexToHsva(result?.sRGBHex));
                     // @ts-ignore
                   } catch (e) {
