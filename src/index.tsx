@@ -52,7 +52,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     const rgba = colorString.get.rgb(color || "transparent");
     // @ts-ignore
     setHsva(rgbaStringToHsva(colorString.to.rgb(rgba)));
-  }, [color]);
+  }, []);
 
   const handleChange = useCallback(
     (hsv: HsvaColor) => {
