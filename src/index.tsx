@@ -29,7 +29,7 @@ export interface SketchProps
   color?: Color; // 当前颜色值
   presetColors?: false | SwatchPresetColor[]; // 预设颜色列表
   editableDisable?: boolean; // 是否禁用编辑
-  onChange?: (newShade: ColorResult) => void; // 颜色改变时的回调函数
+  onChange?: (newShade: ColorResult, oldShade: ColorResult) => void; // 颜色改变时的回调函数
   className?: string; // 自定义类名
 }
 
@@ -56,8 +56,9 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
 
   const handleChange = useCallback(
     (hsv: HsvaColor) => {
+      let oldShade = hsva;
       setHsva(hsv);
-      onChange && onChange(handleColor(hsv));
+      onChange && onChange(handleColor(hsv), handleColor(oldShade));
     },
     [hsva]
   );
