@@ -194,7 +194,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
           style={{
             borderTop: "1px solid rgb(238, 238, 238)",
             paddingTop: 10,
-            paddingLeft: 10,
+            paddingLeft: 14,
           }}
           colors={presetColors}
           color={hsvaToHex(hsva)}
